@@ -772,7 +772,7 @@ def set_priority(id_):
 
 @app.route('/')
 def homepage():
-    return "<h1>See mirror-with-weeb <a href='https://github.com/weebzone/WZML'>@GitHub</a> By <a href='https://github.com/weebzone'>Code With Weeb</a></h1>"
+    return "<h1>See mirror-with-Bot Tutorials<a href='https://github.com/khainee/mltb-bot'>@GitHub</a> By <a href='https://t.me/BotTutorialsMM'>Bot Tutorials</a></h1>"
 
 @app.errorhandler(Exception)
 def page_not_found(e):
