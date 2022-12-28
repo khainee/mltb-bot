@@ -1,25 +1,23 @@
-name: Build Docker
+name: ci
 
 on:
   push:
-   branches: [ master ]
-  pull_request:
-    branches: [ master ]
-      
+    branches:
+      - 'master'
+
 jobs:
-  build:
-
+  docker:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Login to do dockerhub registry
+      -
+        name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKERPW }}
-    - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: user/mirrorleech2:latest
+      -
+        name: Building docker
+        run: docker build . -t ${{ secrets.DOCKER_HUB_USERNAME }}/rclone:latest
+      -
+        name: Pushing docker
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/rclone:latest
